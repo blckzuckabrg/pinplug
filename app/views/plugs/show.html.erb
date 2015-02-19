@@ -4,6 +4,7 @@
   <strong>Description:</strong>
   <%= @plug.description %>
 </p>
-
-<%= link_to 'Edit', edit_plug_path(@plug) %> |
+<% if @plug.user == current_user %>
+	<%= link_to 'Edit', edit_plug_path(@plug) %> |
+<% end %>
 <%= link_to 'Back', plugs_path %>

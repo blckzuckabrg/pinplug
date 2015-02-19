@@ -1,5 +1,7 @@
 class PlugsController < ApplicationController
   before_action :set_plug, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /plugs
   def index
@@ -12,7 +14,7 @@ class PlugsController < ApplicationController
 
   # GET /plugs/new
   def new
-    @plug = Plug.new
+    @plug = current_user.plugs.build
   end
 
   # GET /plugs/1/edit
@@ -21,7 +23,7 @@ class PlugsController < ApplicationController
 
   # POST /plugs
   def create
-    @plug = Plug.new(plug_params)
+    @plug = current_user.plugs.build(plug_params)
 
       if @plug.save
         redirect_to @plug, notice: 'Plug was successfully created.' 
@@ -53,6 +55,11 @@ class PlugsController < ApplicationController
     def set_plug
       @plug = Plug.find(params[:id])
     end
+
+    def correct_user
+        @plug = current_user.plugs.find_by(id: params[:id])
+        redirect_to plugs_path, notice: "Not authorized to edit this plug" if @plug.nil?
+      end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plug_params
