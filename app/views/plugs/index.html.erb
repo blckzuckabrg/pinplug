@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
       <th>Description</th>
       <th>User</th>
       <th colspan="3"></th>
@@ -14,6 +15,7 @@
   <tbody>
     <% @plugs.each do |plug| %>
       <tr>
+        <td><%= image_tag @plug.image.url(:medium) %></td>
         <td><%= plug.description %></td>
         <td><%= plug.user.email if plug.user %></td>
         <td><%= link_to 'Show', plug %></td>

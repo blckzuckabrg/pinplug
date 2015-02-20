@@ -63,6 +63,6 @@ class PlugsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plug_params
-      params.require(:plug).permit(:description)
+      params.require(:plug).permit(:description, :image)
     end
 end
