@@ -18,6 +18,7 @@
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Contact", contact_path %></li>
               <% if user_signed_in? %>
+              <li><%= link_to 'New Plug', new_plug_path %></li>
           <li><%= link_to"Account Settings", edit_user_registration_path %></li>
           <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
         <% else %>

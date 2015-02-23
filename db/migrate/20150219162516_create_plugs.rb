@@ -3,7 +3,7 @@ class CreatePlugs < ActiveRecord::Migration
     create_table :plugs do |t|
       t.string :description
 
-      t.timestamps null: false
+      t.timestamps 
     end
   end
 end

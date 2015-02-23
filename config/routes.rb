@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Pinplug::Application.routes.draw do
   resources :plugs
 
   devise_for :users 
