@@ -1,14 +1,23 @@
+  <%= render 'pages/home' unless user_signed_in? %>
+
   <div id="plugs" class="transitions-enabled">
     <% @plugs.each do |plug| %>
       <div class="box panel panel-default">
-        <%= image_tag plug.image.url(:medium) %>
-        <div class="panel body">
-          <%= plug.description %>
-          <%= plug.user.email if plug.user %>
-          <%= link_to 'Show', plug_path(plug) %>
+        <%= link_to image_tag(plug.image.url(:medium)), plug %>
+        <div class="panel-body">
+         <p> <%= plug.description %></p>
+          <p><strong><%= plug.user.email if plug.user %></strong></p>
           <% if plug.user == current_user %>
-          <%= link_to 'Edit', edit_plug_path(plug) %>
-          <%= link_to 'Destroy', plug, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <div class="actions">
+          <%= link_to edit_plug_path(plug) do %>
+          <span class="glyphicon glyphicon-edit"></span>
+          Edit
+          <% end %>
+          <%= link_to plug, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            Delete
+            <% end %>
+            </div>
           <% end %>
         </div>
       </div>

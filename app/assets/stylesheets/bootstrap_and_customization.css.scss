@@ -8,6 +8,7 @@ $navbar-default-brand-color:      #c32c6b;
 $brand-primary:                                    #c32c6b;
 $jumbotron-bg:                                         white;
 
+@import 'bootstrap-sprockets';
 @import 'bootstrap';
 
 .center {

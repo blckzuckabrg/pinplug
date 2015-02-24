@@ -3,7 +3,7 @@ Pinplug::Application.routes.draw do
 
   devise_for :users 
 
-  root 'pages#home'
+  root 'plugs#index'
   get 'about' => 'pages#about'
   get 'contact' => 'pages#contact'
   
