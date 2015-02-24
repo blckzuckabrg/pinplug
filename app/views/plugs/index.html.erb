@@ -6,7 +6,7 @@
         <%= link_to image_tag(plug.image.url(:medium)), plug %>
         <div class="panel-body">
          <p> <%= plug.description %></p>
-          <p><strong><%= plug.user.email if plug.user %></strong></p>
+          <p><strong><%= plug.user.name if plug.user %></strong></p>
           <% if plug.user == current_user %>
           <div class="actions">
           <%= link_to edit_plug_path(plug) do %>
