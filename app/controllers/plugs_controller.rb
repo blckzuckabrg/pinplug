@@ -5,7 +5,7 @@ class PlugsController < ApplicationController
 
   # GET /plugs
   def index
-    @plugs = Plug.all.order("created_at DESC")
+    @plugs = Plug.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
   end
 
   # GET /plugs/1
