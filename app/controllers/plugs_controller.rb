@@ -5,7 +5,7 @@ class PlugsController < ApplicationController
 
   # GET /plugs
   def index
-    @plugs = Plug.all
+    @plugs = Plug.all.order("created_at DESC")
   end
 
   # GET /plugs/1
